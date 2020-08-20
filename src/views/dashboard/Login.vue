@@ -48,7 +48,6 @@ export default {
       this.$http
         .post(signInUrl, this.user)
         .then((res) => {
-          console.log(res);
           this.token = res.data.token;
           const { expired } = res.data.expired;
           document.cookie = `myToken=${this.token}; expires=${new Date(

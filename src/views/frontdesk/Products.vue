@@ -22,19 +22,21 @@
                 <p class="card-text">{{ product.content }}</p>
               </div>
               <div class="d-flex justify-content-around">
-                <div class="h5" v-if="!product.price">原價 ${{ product.origin_price }} 元</div>
+                <div class="h5" v-if="!product.price">
+                  原價 ${{ product.origin_price | thousand }} 元</div>
                 <div v-else class="product-price">
-                  <div class="h6 product-origin">原價 ${{ product.origin_price }} 元</div>
+                  <div class="h6 product-origin">原價 ${{ product.origin_price | thousand }} 元</div>
                 </div>
-                <div class="h5 product-off">特價 ${{ product.price }} 元</div>
+                <div class="h5 product-off">特價 ${{ product.price | thousand }} 元</div>
               </div>
-              <div class="modal-footer card-footer mt-3">
+              <div class="modal-footer mt-3">
                 <button
                   type="button"
-                  class="btn product-detail"
+                  class="btn btn-outline-coffee product-detail"
                   @click="getProductDetail(product.id)"
                 >商品資訊</button>
-                <button type="button" class="btn ml-auto" @click="addToCart(product)">加入購物車</button>
+                <button type="button" class="btn btn-coffee ml-auto" @click="addToCart(product)">
+                  加入購物車</button>
               </div>
             </div>
           </div>

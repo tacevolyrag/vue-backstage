@@ -16,9 +16,9 @@
               </blockquote>
               <div class="d-flex justify-content-around my-5 product-price">
                 <div class="h6 product-origin" v-if="product.price">
-                  原價 ${{ product.origin_price}} 元</div>
+                  原價 ${{ product.origin_price | thousand }} 元</div>
                 <div class="h5 product-off" v-if="product.price">
-                  特價 ${{ product.price}} 元</div>
+                  特價 ${{ product.price | thousand }} 元</div>
               </div>
               <select v-model="product.num" class="form-control mt-3" name>
                 <option value="0" disabled selected>請選擇數量</option>
@@ -31,7 +31,8 @@
               <div class="card-footer modal-footer mt-3">
                 <div class="mr-3 product-off h5" v-if="product.num">
                   總計
-                  <strong class="product-off">${{ product.price * product.num }} 元</strong>
+                  <strong class="product-off">
+                    ${{ product.price * product.num | thousand }} 元</strong>
                 </div>
                 <button
                   type="button"
@@ -69,7 +70,6 @@ export default {
       const getProductApi = `${process.env.VUE_APP_PATH}api/${process.env.VUE_APP_UUID}/ec/product/${id}`;
       this.$http.get(getProductApi).then((res) => {
         this.product = res.data.data;
-        console.log(this.product);
         this.isLoading = false;
       });
     },
